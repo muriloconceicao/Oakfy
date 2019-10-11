@@ -21,3 +21,5 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class muriloconceicao.oakfy.models.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*

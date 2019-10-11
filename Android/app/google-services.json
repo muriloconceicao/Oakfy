@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "793109647397",
+    "firebase_url": "https://oakfy-e8b03.firebaseio.com",
+    "project_id": "oakfy-e8b03",
+    "storage_bucket": "oakfy-e8b03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793109647397:android:2f0e85abd3768faa396fcc",
+        "android_client_info": {
+          "package_name": "muriloconceicao.oakfy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793109647397-idgm6n81v9mb6t40f0bogu3ikmae2h9i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA28oNOV_2a7-nSnraUwohRdpoaQtQvUfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793109647397-idgm6n81v9mb6t40f0bogu3ikmae2h9i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
