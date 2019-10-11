@@ -1,49 +1,39 @@
 package muriloconceicao.oakfy.views;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import muriloconceicao.oakfy.R;
-import muriloconceicao.oakfy.presenters.LoginActivityPresenter;
+import muriloconceicao.oakfy.presenters.SignInActivityPresenter;
 
-public class LoginActivity extends AppCompatActivity implements LoginActivityPresenter.LoginView {
+public class SignInActivity extends AppCompatActivity implements SignInActivityPresenter.SignInView {
     private FirebaseAuth firebaseAuth;
-    private LoginActivityPresenter loginActivityPresenter;
-
     @BindView(R.id.edtTxtEmail) EditText edtTxtEmail;
     @BindView(R.id.edtTxtPassword) EditText edtTxtPassword;
-    @BindView(R.id.txtViewSignUp) TextView txtViewSignUp;
 
     @OnClick(R.id.btnSignIn)
     public void onBtnSignInClick() {
         checkLoginEditTexts();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        firebaseAuth = FirebaseAuth.getInstance();
-        ButterKnife.bind(this);
+    @OnClick(R.id.txtViewSignUp)
+    public void onTxtViewSignUpClick() {
+        startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        loginActivityPresenter.detach();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_in);
+        firebaseAuth = FirebaseAuth.getInstance();
+        ButterKnife.bind(this);
     }
 
     private void checkLoginEditTexts() {
@@ -53,22 +43,18 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityPre
         if(userEmail.length() <= 0 || userPassword.length() <= 0)
             showErrorMessage();
         else
-            loginRequest(userEmail, userPassword);
+            signInRequest(userEmail, userPassword);
     }
 
-    private void loginRequest(String userEmail, String userPassword) {
-        firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                } else {
-                    showErrorMessage();
-                }
+    private void signInRequest(String userEmail, String userPassword) {
+        firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(task -> {
+            if(task.isSuccessful()) {
+                startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+            } else {
+                showErrorMessage();
             }
         });
     }
-
 
     @Override
     public void showErrorMessage() {
