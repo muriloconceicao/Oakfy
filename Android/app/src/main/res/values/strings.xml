@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Oakfy</string>
+    <string name="loginActivityEdtTxtPasswordHint">Password</string>
+    <string name="loginActivityBtnSignInHint">Sign In</string>
+    <string name="loginActivityTxtViewSignUp">Sign Up</string>
 </resources>

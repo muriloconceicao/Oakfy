@@ -1,9 +1,7 @@
 package muriloconceicao.oakfy.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import muriloconceicao.oakfy.R;
 
 public class HomeActivity extends AppCompatActivity {
